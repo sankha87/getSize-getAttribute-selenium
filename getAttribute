@@ -1,0 +1,28 @@
+package operations;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Gmail3_getAttribute {
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\browser drivers\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.gmail.com");
+		Dimension d = new Dimension(1300,700);
+		driver.manage().window().setSize(d);
+		String email = "selenium";
+		WebElement userName = driver.findElement(By.id("identifierId"));
+		userName.sendKeys(email);
+String actualData = userName.getAttribute("data-initial-value");		
+		System.out.println(actualData);
+		if(actualData.equals(email))
+			System.out.println("Attribute validation passed");
+		else
+			System.out.println("Attribute validation failed");
+System.out.println(userName.getAttribute("id"));
+System.out.println(userName.getAttribute("aria-label"));		
+System.out.println(userName.getAttribute("xyz"));		
+	}
+}
